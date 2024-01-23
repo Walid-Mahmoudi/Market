@@ -1,0 +1,23 @@
+<div class="item">
+    <div routerLink="/detals/{{data.id}}">
+        <div class="product-img position-relative">
+            <div style="height: 200px; width: 100%; background-size: cover;"
+                [ngStyle]="{'background-image': 'url(' + data.image + ')'}">
+            </div>
+            <div class="overlay">
+                <p>{{data.description}}</p>
+            </div>
+        </div>
+        <h4>{{data.title}}</h4>
+    </div>
+    <div class="body-title">
+        <div class="price d-flex justify-content-between align-items-center mt-3">
+            <button *ngIf="!addToCart" (click)="addToCart=true">Add to Cart</button>
+            <div class="w-100 d-flex align-items-center" *ngIf="addToCart">
+                <input type="number" class="w-50 me-1" [(ngModel)]="amount">
+                <button class="btn btn-success" (click)="add();addToCart=false">Add</button>
+            </div>
+            <span>{{data.price}} LE</span>
+        </div>
+    </div>
+</div>

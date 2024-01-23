@@ -1,0 +1,37 @@
+<h2 class="text-center my-5">Register Now</h2>
+<div *ngIf="error" class="alert alert-danger w-50 m-auto mb-3">
+    <h6>{{error}}</h6>
+</div>
+<form (ngSubmit)="submitRegister(registerForm)" [formGroup]="registerForm" class="w-50 m-auto">
+    <div class="col-md-12">
+        <label for="name">Name</label>
+        <input type="text" formControlName="name" class="w-100">
+        <div *ngIf="registerForm.get('name')?.errors&&registerForm.get('name')?.touched"
+            class="bg-danger text-light p-3 my-3">
+            <p class="mb-0" *ngIf="registerForm.get('name')?.errors?.['required']">Name is required</p>
+            <p class="mb-0" *ngIf="registerForm.get('name')?.errors?.['minlength']">Name is minLenght 3</p>
+            <p class="mb-0" *ngIf="registerForm.get('name')?.errors?.['maxlength']">Name is maxLenght 8</p>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" class="w-100">
+        <div *ngIf="registerForm.get('email')?.errors&&registerForm.get('email')?.touched"
+            class="bg-danger text-light p-3">
+            <p class="mb-0" *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</p>
+            <p class="mb-0" *ngIf="registerForm.get('email')?.errors?.['email']">Email is invalid</p>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <label for="password">Password</label>
+        <input type="text" formControlName="password" class="w-100">
+        <div *ngIf="registerForm.get('password')?.errors&&registerForm.get('password')?.touched"
+            class="bg-danger text-light p-3">
+            <p class="mb-0" *ngIf="registerForm.get('password')?.errors?.['required']">Password is required</p>
+            <p class="mb-0" *ngIf="registerForm.get('password')?.errors?.['pattern']">password must start with UpperCase
+                then ....</p>
+        </div>
+    </div>
+    <button [disabled]='registerForm.invalid' type="submit" class="w-50 mt-5 m-auto btn btn-danger">Sign Up</button>
+</form>

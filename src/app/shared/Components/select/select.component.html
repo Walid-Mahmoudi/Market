@@ -1,0 +1,9 @@
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {{title}}:
+    </button>
+    <ul class="dropdown-menu dropdown-menu-dark" (click)="detectChanges($event)">
+        <li><a class="dropdown-item">All Products</a></li>
+        <li><a class="dropdown-item" *ngFor="let item of data">{{item}}</a></li>
+    </ul>
+</div>

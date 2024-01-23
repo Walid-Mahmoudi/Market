@@ -1,0 +1,25 @@
+<h2 class="text-center my-5">Login Now</h2>
+<div *ngIf="error" class="alert alert-danger w-50 m-auto mb-3">
+    <h6>{{error}}</h6>
+</div>
+<form (ngSubmit)="submitLogin(loginForm)" [formGroup]="loginForm" class="w-50 m-auto">
+    <div class="col-md-12">
+        <label for="email">Email</label>
+        <input type="email" formControlName="email" class="w-100">
+        <div *ngIf="loginForm.get('email')?.errors&&loginForm.get('email')?.touched" class="bg-danger text-light p-3">
+            <p class="mb-0" *ngIf="loginForm.get('email')?.errors?.['required']">Email is required</p>
+            <p class="mb-0" *ngIf="loginForm.get('email')?.errors?.['email']">Email is invalid</p>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <label for="password">Password</label>
+        <input type="text" formControlName="password" class="w-100">
+        <div *ngIf="loginForm.get('password')?.errors&&loginForm.get('password')?.touched"
+            class="bg-danger text-light p-3">
+            <p class="mb-0" *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</p>
+            <p class="mb-0" *ngIf="loginForm.get('password')?.errors?.['pattern']">password must start with UpperCase
+                then ....</p>
+        </div>
+    </div>
+    <button [disabled]='loginForm.invalid' type="submit" class="w-50 mt-5 m-auto btn btn-danger">Login</button>
+</form>

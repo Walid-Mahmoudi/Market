@@ -1,0 +1,15 @@
+label {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+input {
+    background: transparent;
+    border: none;
+    border-bottom: solid 1px #000;
+    margin-bottom: 10px;
+}
+
+input:focus {
+    outline: none;
+}

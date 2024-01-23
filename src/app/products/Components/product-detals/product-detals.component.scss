@@ -1,0 +1,33 @@
+img {
+    height: 550px;
+    border-radius: 20px;
+    transition: all 1s cubic-bezier(0.79, 0.33, 0.14, 0.53);
+}
+
+.photo-product {
+    overflow: hidden;
+    position: relative;
+}
+
+img:hover {}
+
+.info {
+    height: 550px;
+    border-radius: 10px;
+    height: 100%;
+    padding: 30px 10px;
+}
+
+li {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+li span {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+h5 {
+    color: #ff131f;
+}

@@ -1,0 +1,53 @@
+<div class="cart mt-5">
+    <div class="header d-flex justify-content-between align-items-center">
+        <div>
+            <h3>Shoping Cart</h3>
+            <p>you have <span>{{cartProducts.length}}</span> item in your cart</p>
+        </div>
+        <div>
+            <button (click)="clearAllProduct()">Clear Shopping Cart</button>
+        </div>
+    </div>
+    <table class="w-100 mt-3">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>SubTotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartProducts,let index = index">
+                <td><img src="{{item.item.image}}" alt=""></td>
+                <td>{{item.item.title}}</td>
+                <td>{{item.item.price}}</td>
+                <td>
+                    <div class="d-flex align-items-center">
+                        <button class="plus" (click)="quentity(index,+1)">+</button>
+                        <input type="number" [(ngModel)]="item.quantity" (change)="detectChange()" min="1"
+                            class="w-25 mx-2">
+                        <button class="mins" (click)="quentity(index,-1)">-</button>
+                    </div>
+                </td>
+                <td>{{item.item.price * item.quantity}} LE</td>
+                <td><button (click)="deleteProduct(index)">Delete</button></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th>Total:{{total}} LE</th>
+                <th><button class="btn btn-success w-100" (click)="addCart()">Order Now</button></th>
+            </tr>
+        </tfoot>
+    </table>
+    <div *ngIf="succses" class="succses d-flex align-items-center mt-5 bg-success text-white p-2">
+        <h5 class="m-0 me-2">Well done</h5>
+        <p>your order is successfully send</p>
+    </div>
+</div>
